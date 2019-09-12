@@ -1,0 +1,52 @@
+/**
+*My Comodity trading network
+ */
+ namespace org.acme.mynetwork
+
+ asset stateW identified by ID {
+   o String ID
+   o Double quantity
+  
+ }
+ asset contractorW identified by ID {
+   o String ID
+   o Double quantity
+  
+ }
+ asset vendorW identified by ID {
+   o String ID
+   o Double quantity
+  
+ }
+
+  
+participant treasury identified by ID {
+  o String ID
+  o String firstname
+  o String lastname
+}
+
+participant state identified by ID {
+  o String ID
+  o String statename
+}
+participant contractor identified by ID {
+  o String ID
+  o String firstname
+  o String lastname
+}
+
+transaction ToGovt {
+  -->stateW statew
+  o Double qun
+}
+transaction ToCon{
+  -->stateW statew
+  -->contractorW contractorw
+  o Double qun
+}
+transaction ToVendor{
+  -->vendorW vendorw
+  -->contractorW contractorw
+  o Double qun
+}
