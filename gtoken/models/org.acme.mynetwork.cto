@@ -1,0 +1,77 @@
+/**
+*My Comodity trading network
+ */
+ namespace org.acme.mynetwork
+
+asset TreasuryVault identified by ID{
+   o String ID
+   o Double quantity
+}
+
+ asset StateVault identified by ID {
+   o String ID
+   o Double quantity
+  }
+
+asset ContractorVault identified by ID {
+   o String ID
+   o Double quantity
+  
+ }
+ asset VendorVault identified by ID {
+   o String ID
+   o Double quantity
+ }
+
+  
+participant Treasury identified by ID {
+  o String ID
+  o String firstname
+  o String lastname
+}
+
+participant State identified by ID {
+  o String ID
+  o String statename
+}
+participant Contractor identified by ID {
+  o String ID
+  o String firstname
+  o String lastname
+}
+participant Vendor identified by ID {
+  o String ID
+  o String firstname
+  o String lastname
+} 
+
+transaction CreateGtokens{
+   -->TreasuryVault treasuryVault
+   o Double gToken
+}
+
+transaction ToGovernment {
+  -->TreasuryVault treasuryVault
+  -->StateVault stateVault
+  o Double gToken
+}
+transaction ToContractor{
+  -->StateVault stateVault
+  -->ContractorVault contractorVault
+  o Double gToken
+}
+transaction ToVendor{
+  -->VendorVault vendorVault
+  -->ContractorVault contractorVault
+  o Double gToken
+}
+transaction ToTreasuryFromVendor{
+  -->VendorVault vendorVault
+  -->TreasuryVault treasuryVault
+  o Double gToken
+}
+transaction ToTreasuryFromContractor{
+  -->ContractorVault contractorVault
+  -->TreasuryVault treasuryVault
+  o Double gToken
+}
