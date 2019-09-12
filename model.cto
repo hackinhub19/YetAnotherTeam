@@ -3,50 +3,75 @@
  */
  namespace org.acme.mynetwork
 
- asset stateW identified by ID {
+asset TreasuryVault identified by ID{
+   o String ID
+   o Double quantity
+}
+
+ asset StateVault identified by ID {
+   o String ID
+   o Double quantity
+  }
+
+asset ContractorVault identified by ID {
    o String ID
    o Double quantity
   
  }
- asset contractorW identified by ID {
+ asset VendorVault identified by ID {
    o String ID
    o Double quantity
-  
- }
- asset vendorW identified by ID {
-   o String ID
-   o Double quantity
-  
  }
 
   
-participant treasury identified by ID {
+participant Treasury identified by ID {
   o String ID
   o String firstname
   o String lastname
 }
 
-participant state identified by ID {
+participant State identified by ID {
   o String ID
   o String statename
 }
-participant contractor identified by ID {
+participant Contractor identified by ID {
   o String ID
   o String firstname
   o String lastname
 }
+participant Vendor identified by ID {
+  o String ID
+  o String firstname
+  o String lastname
+} 
 
-transaction ToGovt {
-  -->stateW statew
-  o Double qun
+transaction CreateGtokens{
+   -->TreasuryVault treasuryVault
+   o Double gToken
 }
-transaction ToCon{
-  -->stateW statew
-  -->contractorW contractorw
-  o Double qun
+
+transaction ToGovernment {
+  -->TreasuryVault treasuryVault
+  -->StateVault stateVault
+  o Double gToken
+}
+transaction ToContractor{
+  -->StateVault stateVault
+  -->ContractorVault contractorVault
+  o Double gToken
 }
 transaction ToVendor{
-  -->vendorW vendorw
-  -->contractorW contractorw
-  o Double qun
+  -->VendorVault vendorVault
+  -->ContractorVault contractorVault
+  o Double gToken
+}
+transaction ToTreasuryFromVendor{
+  -->VendorVault vendorVault
+  -->TreasuryVault treasuryVault
+  o Double gToken
+}
+transaction ToTreasuryFromContractor{
+  -->ContractorVault contractorVault
+  -->TreasuryVault treasuryVault
+  o Double gToken
 }
