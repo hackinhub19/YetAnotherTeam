@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vendor</title>
+</head>
+<body>
+        <div class="w3-card-2 w3-padding w3-margin">
+                <div class="w3-container w3-blue">
+                <h2>Add Vendor Participant and Asset</h2>
+                </div>
+                <br>
+                <div class="w3-container">
+    VendorID: <input type="text" name="" id="sid" class="w3-input">
+    <br>
+    First-Name: <input type="text" name="" id="fn" class="w3-input">
+    <br>
+    Second-Name: <input type="text" name="" id="ln" class="w3-input">
+    <br>
+    <button onclick="addstate()" class="w3-button w3-blue">Add Vendor</button>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function addstate(){
+           var id=document.getElementById('sid').value;
+        var fn=document.getElementById('fn').value;
+        var ln=document.getElementById('ln').value;
+
+            const Url1="http://localhost:3000/api/org.acme.mynetwork.Vendor";
+            axios({
+                method: 'post',
+                url: Url1,
+                data:{
+                    "$class": "org.acme.mynetwork.Vendor",
+                "ID": id,
+                "firstname": fn,
+                "lastname": ln 
+                }
+            }).then(data=>{
+                window.alert("success");
+            }).catch(err=>console.log(err));
+
+
+            
+            const Url2="http://localhost:3000/api/org.acme.mynetwork.VendorVault";
+            axios({
+                method: 'post',
+                url: Url2,
+                data:{
+  "$class": "org.acme.mynetwork.VendorVault",
+  "ID": id,
+  "quantity": 0
+                }
+                
+            }).then(data=>{
+                window.alert("success");
+            }).catch(err=>console.log(err));
+
+        }
+
+    </script>
+</body>
+</html>

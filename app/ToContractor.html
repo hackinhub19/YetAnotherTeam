@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>To Contractor</title>
+</head>
+<body>
+        <div class="w3-card-2 w3-padding w3-margin">
+                <div class="w3-container w3-blue">
+                <h2>ToContractor</h2>
+                </div>
+                <br>
+                <div class="w3-container">
+    GovtID: <input type="text" name="" id="sid" class="w3-input">
+    <br>
+    ContractorID: <input type="text" name="" id="sn" class="w3-input">
+    <br>
+    GToken: <input type="number" name="" id="qty" class="w3-input">
+    <br>
+    <button onclick="addstate()" class="w3-button w3-blue">Send To Contractor</button>
+
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function addstate(){
+           var id=document.getElementById('sid').value;
+        var sn=document.getElementById('sn').value;
+        var gc=document.getElementById('qty').value;
+
+            const Url1="http://localhost:3000/api/org.acme.mynetwork.ToContractor";
+            axios({
+                method: 'post',
+                url: Url1,
+                data:{
+                    "$class": "org.acme.mynetwork.ToContractor",
+                    "stateVault": "resource:org.acme.mynetwork.StateVault#"+id,
+                        "contractorVault": "resource:org.acme.mynetwork.ContractorVault#"+sn,
+                        "gToken": gc
+                }
+            }).then(data=>{
+                window.alert("success");
+            }).catch(err=>console.log(err));
+
+
+            
+           
+        }
+
+    </script>
+</body>
+</html>

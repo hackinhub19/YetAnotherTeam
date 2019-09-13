@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>State</title>
+</head>
+<body>
+ <div class="w3-card-2 w3-padding w3-margin">
+    <div class="w3-container w3-blue">
+    <h2>Add State Participant and Asset</h2>
+    </div>
+    <br>
+    <div class="w3-container">
+    StateID: <input type="text" name="" id="sid" class="w3-input">
+    <br>
+    StateName: <input type="text" name="" id="sn" class="w3-input">
+    <br>
+    <button class="w3-button w3-blue " onclick="addstate()">Add State</button>
+    </div>
+    <br>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function addstate(){
+           var id=document.getElementById('sid').value;
+        var sn=document.getElementById('sn').value;
+
+            const Url1="http://localhost:3000/api/org.acme.mynetwork.State";
+            axios({
+                method: 'post',
+                url: Url1,
+                data:{
+                    "$class": "org.acme.mynetwork.State",
+                "ID": id,
+                "statename": sn 
+                }
+            }).then(data=>{
+                window.alert("success");
+            }).catch(err=>console.log(err));
+
+
+            
+            const Url2="http://localhost:3000/api/org.acme.mynetwork.StateVault";
+            axios({
+                method: 'post',
+                url: Url2,
+                data:{
+  "$class": "org.acme.mynetwork.StateVault",
+  "ID": id,
+  "quantity": 0
+                }
+                
+            }).then(data=>{
+                window.alert("success");
+            }).catch(err=>console.log(err));
+
+        }
+
+    </script>
+</body>
+</html>

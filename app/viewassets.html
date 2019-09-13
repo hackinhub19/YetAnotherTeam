@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Assets</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+        <header class="w3-container w3-blue">
+                <h1>Assets</h1>
+              </header>
+    <h3>State</h3>
+    <p id="state">
+
+
+    </p>
+    <h3>Treasury</h3>
+    <p id="treasury">
+
+    </p>
+    <h3>Contractor</h3>
+    <p id="contractor">
+
+    </p>
+    <h3>Vendor</h3>
+    <p id="vendors">
+
+    </p>
+    <button onclick="hello()">Get Info</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+   function hello()
+    {
+      const Url1="http://localhost:3000/api/org.acme.mynetwork.StateVault";
+      axios.get(Url1).then(data=>{
+          var arr=data.data;
+          document.getElementById('state').innerHTML=JSON.stringify(arr);
+      }).catch(err=>{
+          console.log(err);
+      });
+
+      const Url2="http://localhost:3000/api/org.acme.mynetwork.TreasuryVault";
+      axios.get(Url2).then(data=>{
+          var arr=data.data;
+          document.getElementById('treasury').innerHTML=JSON.stringify(arr);
+      }).catch(err=>{
+          console.log(err);
+      });
+
+      const Url3="http://localhost:3000/api/org.acme.mynetwork.ContractorVault";
+      axios.get(Url3).then(data=>{
+          var arr=data.data;
+          document.getElementById('contractor').innerHTML=JSON.stringify(arr);
+      }).catch(err=>{
+          console.log(err);
+      });
+
+      const Url4="http://localhost:3000/api/org.acme.mynetwork.VendorVault";
+      axios.get(Url4).then(data=>{
+          var arr=data.data;
+          document.getElementById('vendors').innerHTML=JSON.stringify(arr);
+      }).catch(err=>{
+          console.log(err);
+      });
+      
+    }
+</script>
+</body>
+</html>
