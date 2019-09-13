@@ -3,15 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Tresury</title>
+    <title>Treasury</title>
 </head>
 <body>
-    tresuryID: <input type="text" name="" id="sid">
+        <div class="w3-card-2 w3-padding w3-margin">
+                <div class="w3-container w3-blue">
+                <h2>Add Treasury Participant and Asset</h2>
+                </div>
+                <br>
+                <div class="w3-container">
+    TreasuryID: <input type="text" name="" id="sid" class="w3-input">
     <br>
-    tresuryName: <input type="text" name="" id="sn">
+    TreasuryName: <input type="text" name="" id="sn" class="w3-input">
     <br>
-    <button onclick="addstate()">Add State</button>
+    <button onclick="addstate()" class="w3-button w3-blue">Add Treasury</button>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         function addstate(){

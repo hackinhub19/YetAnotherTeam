@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>To govt from contractor</title>
+    <title>To Treasury from contractor</title>
 </head>
 <body>
-    ContractorID: <input type="text" name="" id="sid">
+        <div class="w3-card-2 w3-padding w3-margin">
+                <div class="w3-container w3-blue">
+                <h2>ToTreasuryFromContractor</h2>
+                </div>
+                <br>
+                <div class="w3-container">
+    ContractorID: <input type="text" name="" id="sid" class="w3-input">
     <br>
-    TreasuryID: <input type="text" name="" id="sn">
+    TreasuryID: <input type="text" name="" id="sn" class="w3-input">
     <br>
-    GToken: <input type="number" name="" id="qty">
-    <button onclick="addstate()">Add State</button>
+    GToken: <input type="number" name="" id="qty" class="w3-input">
+    <br>
+    <button onclick="addstate()" class="w3-blue w3-button">Add State</button>
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         function addstate(){
